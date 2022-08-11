@@ -1,0 +1,24 @@
+{
+  "name": "logseq-plugin-reset-sidebar",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build": "vite build && cp icon.png package.json LICENSE dist/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "vite": "^3.0.3"
+  },
+  "dependencies": {
+    "@logseq/libs": "^0.0.6"
+  },
+  "logseq": {
+    "id": "logseq-plugin-reset-sidebar",
+    "title": "Reset Sidebar",
+    "icon": "./icon.png"
+  }
+}
