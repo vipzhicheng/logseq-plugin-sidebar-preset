@@ -1,12 +1,12 @@
-# Logseq Reset Sidebar
+# Logseq Sidebar Preset
 
-[![Github All Releases](https://img.shields.io/github/downloads/vipzhicheng/logseq-plugin-reset-sidebar/total.svg)](https://github.com/vipzhicheng/logseq-plugin-reset-sidebar/releases)
+[![Github All Releases](https://img.shields.io/github/downloads/vipzhicheng/logseq-plugin-sidebar-preset/total.svg)](https://github.com/vipzhicheng/logseq-plugin-sidebar-preset/releases)
 
-A Logseq plugin to reset a managed sidebar.
+A Logseq plugin to provide a group of sidebar presets.
 
 ![Screencast](./screencast.gif)
 
-Logseq's sidebar is a dynamic region, sometimes you want to keep some pages or blocks always shown on top and in specific order. This plugin can help you do this.
+Logseq's sidebar is a dynamic region, sometimes you want to keep some pages or blocks always shown on top and in specific order. This plugin can help you achieve this.
 
 It provides you five lists (I hope it's enough for you), you can choose to use one of them.
 

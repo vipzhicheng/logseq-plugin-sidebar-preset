@@ -1,5 +1,5 @@
 {
-  "name": "logseq-plugin-reset-sidebar",
+  "name": "logseq-plugin-sidebar-preset",
   "version": "0.0.1",
   "description": "",
   "main": "index.html",
@@ -17,8 +17,8 @@
     "@logseq/libs": "^0.0.7"
   },
   "logseq": {
-    "id": "logseq-plugin-reset-sidebar",
-    "title": "Reset Sidebar",
+    "id": "logseq-plugin-sidebar-preset",
+    "title": "Sidebar Preset",
     "icon": "./icon.png"
   }
 }
