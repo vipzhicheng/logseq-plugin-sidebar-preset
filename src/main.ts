@@ -97,7 +97,7 @@ const main = async () => {
 
   logseq.provideModel(model);
   logseq.App.registerUIItem("toolbar", {
-    key: "logseq-reset-sidebar",
+    key: "logseq-sidebar-preset",
     template: `
       <a class="button" data-on-click="resetSidebar" title="Reset sidebar">
       <i class="ti ti-layout-sidebar-right" style=""></i>
