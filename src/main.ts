@@ -70,6 +70,9 @@ const main = async () => {
   const model = {
     async resetSidebar() {
       if (logseq.settings?.chooseSidebar) {
+        await logseq.App.clearRightSidebarBlocks({
+          close: false,
+        });
         const sidebar = logseq.settings.chooseSidebar;
         const sidebarContent = logseq.settings[sidebar];
         if (sidebarContent) {
