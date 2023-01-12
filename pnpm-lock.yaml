@@ -1,16 +1,16 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@logseq/libs': ^0.0.12
+  '@logseq/libs': ^0.0.14
   typescript: ^4.9.4
-  vite: ^4.0.1
+  vite: ^4.0.4
 
 dependencies:
-  '@logseq/libs': 0.0.12
+  '@logseq/libs': 0.0.14
 
 devDependencies:
   typescript: 4.9.4
-  vite: 4.0.1
+  vite: 4.0.4
 
 packages:
 
@@ -212,8 +212,8 @@ packages:
     dev: true
     optional: true
 
-  /@logseq/libs/0.0.12:
-    resolution: {integrity: sha512-Efcb0pUrQUehCMS3qviyd5+g7kBptLM3geXvT07FOdzKsp9nbYT4ge7pMGZnnmzE9CPUTN3KLr6rhkQL2RM92A==}
+  /@logseq/libs/0.0.14:
+    resolution: {integrity: sha512-QcNeVxb4LIvV4Tid0ABZXV7fxYdZHynzLlukSk6Ydkuus+hBzLcjfK15nzybIRbiV7ANqSgTooDZkV/E4WP57Q==}
     dependencies:
       csstype: 3.1.0
       debug: 4.3.4
@@ -427,8 +427,8 @@ packages:
       inherits: 2.0.3
     dev: false
 
-  /vite/4.0.1:
-    resolution: {integrity: sha512-kZQPzbDau35iWOhy3CpkrRC7It+HIHtulAzBhMqzGHKRf/4+vmh8rPDDdv98SWQrFWo6//3ozwsRmwQIPZsK9g==}
+  /vite/4.0.4:
+    resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:

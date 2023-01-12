@@ -11,10 +11,10 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^4.9.4",
-    "vite": "^4.0.1"
+    "vite": "^4.0.4"
   },
   "dependencies": {
-    "@logseq/libs": "^0.0.12"
+    "@logseq/libs": "^0.0.14"
   },
   "logseq": {
     "id": "logseq-plugin-sidebar-preset",
