@@ -8,11 +8,7 @@ A Logseq plugin to provide a group of sidebar presets.
 
 Logseq's sidebar is a dynamic region, sometimes you want to keep some pages or blocks always shown on top and in specific order. This plugin can help you achieve this.
 
-It provides you five lists (I hope it's enough for you), you can choose to use one of them.
-
-## Known issue
-
-For now it can not clear those non-used panes, but you can use shortcut: double `cmd+c` to clear sidebar first, then click the reset sidebar toolbar icon.
+It's settings page loaded dynamically by repos and apply current repo sidebar preset.
 
 ## Buy me a coffee
 
