@@ -10,11 +10,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/md5": "^2.3.2",
     "typescript": "^4.9.4",
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "@logseq/libs": "^0.0.14"
+    "@logseq/libs": "^0.0.14",
+    "md5": "^2.3.0"
   },
   "logseq": {
     "id": "logseq-plugin-sidebar-preset",

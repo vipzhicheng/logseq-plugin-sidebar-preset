@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.0.0
+
+- BREAKING: support multiple repos sidebar presets.
+
 ## v0.0.4
 
 - fix: clear sidebar before apply preset.

@@ -1,80 +1,47 @@
 import "@logseq/libs";
 import { SettingSchemaDesc } from "@logseq/libs/dist/LSPlugin.user";
-
-const defineSettings: SettingSchemaDesc[] = [
-  // @ts-ignore
-  {
-    key: "generalHeading",
-    title: "General settings",
-    type: "heading",
-  },
-  {
-    key: "chooseSidebar",
-    title: "Choose sidebar",
-    description: "Choose sidebar",
-    type: "enum",
-    enumPicker: "select",
-    enumChoices: ["sidebar1", "sidebar2", "sidebar3", "sidebar4", "sidebar5"],
-    default: "sidebar1",
-  },
-  // @ts-ignore
-  {
-    key: "sidebarlHeading",
-    title: "Sidebars",
-    type: "heading",
-  },
-  {
-    key: "sidebar1",
-    title: "Sidebar 1",
-    description: "Sidebar 1",
-    type: "string",
-    inputAs: "textarea",
-    default: "",
-  },
-  {
-    key: "sidebar2",
-    title: "Sidebar 2",
-    description: "Sidebar 2",
-    type: "string",
-    inputAs: "textarea",
-    default: "",
-  },
-  {
-    key: "sidebar3",
-    title: "Sidebar 3",
-    description: "Sidebar 3",
-    type: "string",
-    inputAs: "textarea",
-    default: "",
-  },
-  {
-    key: "sidebar4",
-    title: "Sidebar 4",
-    description: "Sidebar 4",
-    type: "string",
-    inputAs: "textarea",
-    default: "",
-  },
-  {
-    key: "sidebar5",
-    title: "Sidebar 5",
-    description: "Sidebar 5",
-    type: "string",
-    inputAs: "textarea",
-    default: "",
-  },
-];
-logseq.useSettingsSchema(defineSettings);
+import md5 from "md5";
 
 const main = async () => {
+  let config = await logseq.App.getUserConfigs();
+
+  const newDefaultSettings: SettingSchemaDesc[] = [
+    // @ts-ignore
+    {
+      key: "sidebarlHeading",
+      title: "Sidebars (Auto Load by Graphs)",
+      type: "heading",
+    },
+  ];
+
+  if (config.me.repos.length > 0) {
+    config.me.repos.forEach((repo: any) => {
+      const readableTitle = repo.url.split("/").slice(-2).join("/");
+      newDefaultSettings.push({
+        key: `${readableTitle}_${md5(repo.url)}`,
+        title: readableTitle,
+        description: "",
+        type: "string",
+        inputAs: "textarea",
+        default: "",
+      });
+    });
+  }
+
+  logseq.useSettingsSchema(newDefaultSettings);
+
   const model = {
     async resetSidebar() {
-      if (logseq.settings?.chooseSidebar) {
+      if (logseq.settings) {
         await logseq.App.clearRightSidebarBlocks({
           close: false,
         });
-        const sidebar = logseq.settings.chooseSidebar;
-        const sidebarContent = logseq.settings[sidebar];
+        const readableTitle = config.currentGraph
+          .split("/")
+          .slice(-2)
+          .join("/");
+        const graphKey = `${readableTitle}_${md5(config.currentGraph)}`;
+        const sidebarContent = logseq.settings[graphKey];
         if (sidebarContent) {
           const sidebarSplit = sidebarContent.split("\n").reverse();
 
@@ -109,6 +76,10 @@ const main = async () => {
   });
   logseq.onSettingsChanged(() => {
     model.resetSidebar();
+  });
+
+  logseq.App.onCurrentGraphChanged(async (e) => {
+    config = await logseq.App.getUserConfigs();
   });
 };
 
