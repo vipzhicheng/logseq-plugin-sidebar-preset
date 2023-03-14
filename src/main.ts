@@ -2,13 +2,47 @@ import "@logseq/libs";
 import { SettingSchemaDesc } from "@logseq/libs/dist/LSPlugin.user";
 import md5 from "md5";
 
+const settingsVersion = "v1";
+export const defaultSettings = {
+  keyBindings: {
+    resetSidebar: "",
+  },
+  settingsVersion,
+  disabled: false,
+};
+
+export type DefaultSettingsType = typeof defaultSettings;
+
+export const initSettings = () => {
+  let settings = logseq.settings;
+
+  const shouldUpdateSettings =
+    !settings || settings.settingsVersion != defaultSettings.settingsVersion;
+
+  if (shouldUpdateSettings) {
+    settings = defaultSettings;
+    logseq.updateSettings(settings);
+  }
+};
+
+export const getSettings = (
+  key: string | undefined,
+  defaultValue: any = undefined
+) => {
+  const settings = logseq.settings;
+  const merged = Object.assign(defaultSettings, settings);
+  return key ? (merged[key] ? merged[key] : defaultValue) : merged;
+};
+
 const main = async () => {
+  initSettings();
+  let keyBindings = getSettings("keyBindings");
   let config = await logseq.App.getUserConfigs();
 
   const newDefaultSettings: SettingSchemaDesc[] = [
     // @ts-ignore
     {
-      key: "sidebarlHeading",
+      key: "sidebarHeading",
       title: "Sidebars (Auto Load by Graphs)",
       type: "heading",
     },
@@ -74,13 +108,27 @@ const main = async () => {
       </a>
     `,
   });
-  logseq.onSettingsChanged(() => {
+  logseq.onSettingsChanged(async (newSettings: any, oldSettings: any) => {
     model.resetSidebar();
   });
 
   logseq.App.onCurrentGraphChanged(async (e) => {
     config = await logseq.App.getUserConfigs();
   });
+
+  logseq.App.registerCommandPalette(
+    {
+      key: `sidebar-preset`,
+      label: `Reset sidebar to sidebar preset`,
+      keybinding: {
+        mode: "global",
+        binding: keyBindings.resetSidebar || null,
+      },
+    },
+    async () => {
+      await model.resetSidebar();
+    }
+  );
 };
 
 logseq.ready(main).catch(console.error);

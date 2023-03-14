@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.0.1
+
+- fix: support keybinding, empty by default
 ## v1.0.0
 
 - BREAKING: support multiple repos sidebar presets.
